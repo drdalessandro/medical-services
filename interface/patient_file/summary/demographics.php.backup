@@ -610,24 +610,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             placeHtml("vitals_fragment.php", "vitals_ps_expand");
             <?php } ?>
 
-// Labs section - agregar donde esté la sección de Vitals
-<?php if ($GLOBALS['enable_cdr'] && $GLOBALS['enable_cdr_crw']) {
-    // Clinical Decision Rules
-
-// Labs Fragment
-echo "<div class='card'>";
-echo "<div class='card-header'>";
-echo "<div class='card-title'>" . xlt('Laboratory Results') . " <a href='../encounter/trend_form.php?formname=labs' class='btn btn-sm btn-primary' onclick='top.restoreSession()'>" . xlt('Trend') . "</a></div>";
-echo "</div>";
-echo "<div class='card-body'>";
-if (AclMain::aclCheckCore('patients', 'med')) {
-    include_once("../../interface/patient_file/summary/labs_fragment.php");
-} else {
-    echo "<p>" . xlt('You are not authorized to view this information') . "</p>";
-}
-echo "</div>";
-echo "</div>";
-?>
+            <?php if ($GLOBALS['enable_cdr'] && $GLOBALS['enable_cdr_crw']) { ?>
             placeHtml("clinical_reminders_fragment.php", "clinical_reminders_ps_expand", true, true).then(() => {
                 // (note need to place javascript code here also to get the dynamic link to work)
                 $(".medium_modal").on('click', function (e) {
@@ -1475,26 +1458,6 @@ echo "</div>";
                         echo $twig->getTwig()->render('patient/card/loader.html.twig', $viewArgs);
                     endwhile; // end while
                     ?>
-
-<?php
-// Agregar esta sección en el dashboard donde aparecen vitals y otros widgets
-
-echo "<div class='card-header bg-primary text-white'>";
-echo "<div class='card-title mb-0'><i class='fas fa-flask mr-2'></i>" . xlt("Latest Laboratory Results") . "</div>";
-echo "</div>";
-echo "<div class='card-body'>";
-
-// Incluir el fragmento de labs
-if (file_exists($GLOBALS['fileroot'] . '/interface/patient_file/summary/labs_fragment.php')) {
-    include($GLOBALS['fileroot'] . '/interface/patient_file/summary/labs_fragment.php');
-} else {
-    echo "<div class='text-center'>";
-    echo "<p class='text-muted'>" . xlt("Laboratory results module not available") . "</p>";
-    echo "</div>";
-}
-
-echo "</div>";
-?>
                 </div> <!-- end left column div -->
                 <div class="col-md-4 px-2">
                     <!-- start right column div -->

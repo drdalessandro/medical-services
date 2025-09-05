@@ -5,8 +5,8 @@
  *
  * @package   OpenEMR
  * @link      http://www.open-emr.org
- * @author    [Your Name]
- * @copyright Copyright (c) 2025 [Your Name]
+ * @author    Dr Alejandro Sergio D'Alessandro
+ * @copyright Copyright (c) 2025 EPA Bienestar IA
  * @license   https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
  */
 
